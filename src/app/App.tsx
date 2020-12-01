@@ -1,7 +1,7 @@
 import React from 'react';
-import 'scss/pages/_App.scss';
-
 import HomePage from 'modules/Main/pages/HomePage';
+
+import './App.scss';
 
 const App = (): React.ReactElement => {
   return (

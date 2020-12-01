@@ -1,41 +1,14 @@
 import React from 'react';
+import 'scss/base/_global.scss';
 import 'scss/pages/_HomePage.scss';
+import { usePrimaryMenuItemConfig } from 'modules/Main/hooks/usePrimaryMenuItemConfig';
+import PrimaryMenu from 'library/components/PrimaryMenu';
 
 const HomePage = (): React.ReactElement => {
+  const menuItems = usePrimaryMenuItemConfig();
   return (
     <div data-testid="homepage" className="homepage">
-      <div className="primary-menu">
-        <div className="menu-item">
-          <div className="content">
-            <h1 className="title">HATS</h1>
-            <span className="subtitle">SHOP NOW</span>
-          </div>
-        </div>
-        <div className="menu-item">
-          <div className="content">
-            <h1 className="title">HATS</h1>
-            <span className="subtitle">SHOP NOW</span>
-          </div>
-        </div>
-        <div className="menu-item">
-          <div className="content">
-            <h1 className="title">JACKETS</h1>
-            <span className="subtitle">SHOP NOW</span>
-          </div>
-        </div>
-        <div className="menu-item">
-          <div className="content">
-            <h1 className="title">WOMEN'S</h1>
-            <span className="subtitle">SHOP NOW</span>
-          </div>
-        </div>
-        <div className="menu-item">
-          <div className="content">
-            <h1 className="title">MEN'S</h1>
-            <span className="subtitle">SHOP NOW</span>
-          </div>
-        </div>
-      </div>
+      <PrimaryMenu menuItems={menuItems} />
     </div>
   );
 };
