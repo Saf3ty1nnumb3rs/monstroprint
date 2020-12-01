@@ -1,14 +1,12 @@
 import React from 'react';
-import './App.css';
+import 'scss/pages/_App.scss';
+
+import HomePage from 'modules/Main/pages/HomePage';
 
 const App = (): React.ReactElement => {
   return (
     <div data-testid="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </header>
+      <HomePage />
     </div>
   );
 };
