@@ -11,18 +11,11 @@ const PrimaryMenu = ({
   return (
     <div className="primary-menu">
       {menuItems.map(
-        (item: SelectablePrimaryMenuItem): React.ReactElement => {
-          const { title, subtitle, className, contentClass, imageUrl } = item;
-          return (
-            <MenuItem
-              key={title}
-              title={title}
-              subtitle={subtitle}
-              className={className}
-              contentClass={contentClass}
-              imageUrl={imageUrl}
-            />
-          );
+        ({
+          title,
+          ...itemProps
+        }: SelectablePrimaryMenuItem): React.ReactElement => {
+          return <MenuItem key={title} title={title} {...itemProps} />;
         },
       )}
     </div>
