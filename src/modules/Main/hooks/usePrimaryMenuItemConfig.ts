@@ -3,29 +3,39 @@ import { SelectablePrimaryMenuItem } from 'library/types/BaseComponentTypes';
 export const usePrimaryMenuItemConfig = (): SelectablePrimaryMenuItem[] => {
   const primaryMenuItems = [
     {
-      title: 'HATS',
+      title: 'Sci Fi',
       subtitle: 'SHOP NOW',
-      className: 'hats',
+      imageUrl:
+        'https://drive.google.com/uc?id=13_m7CVDlUPYdkkWtFdkLXnziCiOqluHt',
+      className: 'small',
     },
     {
-      title: 'JACKETS',
+      title: 'Industrial',
       subtitle: 'SHOP NOW',
-      className: 'jackets',
+      imageUrl:
+        'https://drive.google.com/uc?id=1_gRxjg9iDiSQN3drtv4ZGzta2mpzglqo',
+      className: 'small',
     },
     {
-      title: 'PANTS',
+      title: 'Historic',
       subtitle: 'SHOP NOW',
-      className: 'pants',
+      imageUrl:
+        'https://drive.google.com/uc?id=1FasurgWsETQxh-XrzAjg3Ks90rXz1Vas',
+      className: 'small',
     },
     {
-      title: "WOMEN'S",
+      title: 'Imported',
       subtitle: 'SHOP NOW',
-      className: 'womens',
+      imageUrl:
+        'https://drive.google.com/uc?id=1dE1xYZUuWrbjidR-FkscxE_nARybPGgs',
+      className: 'large',
     },
     {
-      title: "MEN'S",
+      title: 'Propaganda',
       subtitle: 'SHOP NOW',
-      className: 'mens',
+      imageUrl:
+        'https://drive.google.com/uc?id=1SvpNUlllPii8mj-dMYMLkIfV8ZBs3JON',
+      className: 'large',
     },
   ];
   return primaryMenuItems;
