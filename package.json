@@ -2,7 +2,35 @@
   "name": "monstro2",
   "version": "0.1.0",
   "private": true,
+  "main": "src/index.js",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.tsx"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover"
+    ]
+  },
   "dependencies": {
+    "@babel/runtime": "^7.12.5",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -22,7 +50,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom-fourteen --maxWorkers=4",
-    "test:coverage": "npm run test --coverage --watchAll=false",
+    "test:coverage": "npm test -- --coverage --watchAll=false --no-cache",
     "eject": "react-scripts eject"
   },
   "lint-staged": {
@@ -52,33 +80,8 @@
       "last 1 safari version"
     ]
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!<rootDir>/node_modules/"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    },
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/src/index.tsx"
-    ],
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text",
-      "clover"
-    ]
-  },
   "devDependencies": {
+    "@babel/preset-react": "^7.12.7",
     "@testing-library/dom": "^7.28.1",
     "@testing-library/react-hooks": "^3.4.2",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
@@ -92,6 +95,7 @@
     "lint-staged": "^10.5.2",
     "prettier": "^2.2.1",
     "react-test-renderer": "^17.0.1",
-    "ts-jest": "^26.4.4"
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11"
   }
 }
