@@ -8,6 +8,7 @@ export const usePrimaryMenuItemConfig = (): SelectablePrimaryMenuItem[] => {
       imageUrl:
         'https://drive.google.com/uc?id=13_m7CVDlUPYdkkWtFdkLXnziCiOqluHt',
       className: 'small',
+      link: 'scifi',
     },
     {
       title: 'industrial',
@@ -15,6 +16,7 @@ export const usePrimaryMenuItemConfig = (): SelectablePrimaryMenuItem[] => {
       imageUrl:
         'https://drive.google.com/uc?id=1_gRxjg9iDiSQN3drtv4ZGzta2mpzglqo',
       className: 'small',
+      link: 'industrial',
     },
     {
       title: 'historic',
@@ -22,6 +24,7 @@ export const usePrimaryMenuItemConfig = (): SelectablePrimaryMenuItem[] => {
       imageUrl:
         'https://drive.google.com/uc?id=1FasurgWsETQxh-XrzAjg3Ks90rXz1Vas',
       className: 'small',
+      link: 'historic',
     },
     {
       title: 'imported',
@@ -29,6 +32,7 @@ export const usePrimaryMenuItemConfig = (): SelectablePrimaryMenuItem[] => {
       imageUrl:
         'https://drive.google.com/uc?id=1dE1xYZUuWrbjidR-FkscxE_nARybPGgs',
       className: 'large',
+      link: 'imported',
     },
     {
       title: 'propaganda',
@@ -36,6 +40,7 @@ export const usePrimaryMenuItemConfig = (): SelectablePrimaryMenuItem[] => {
       imageUrl:
         'https://drive.google.com/uc?id=1SvpNUlllPii8mj-dMYMLkIfV8ZBs3JON',
       className: 'large',
+      link: 'propaganda',
     },
   ];
   return primaryMenuItems;

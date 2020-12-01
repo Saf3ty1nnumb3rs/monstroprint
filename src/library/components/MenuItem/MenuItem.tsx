@@ -1,4 +1,5 @@
 import React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import 'scss/components/_MenuItem.scss';
 import { SelectablePrimaryMenuItem } from 'library/types/BaseComponentTypes';
 
@@ -8,12 +9,17 @@ const MenuItem = ({
   className = '',
   contentClass = '',
   imageUrl,
-}: SelectablePrimaryMenuItem): React.ReactElement => {
+  link = '/',
+  history,
+}: SelectablePrimaryMenuItem & RouteComponentProps): React.ReactElement => {
   const backgroundStyle = imageUrl
     ? { backgroundImage: `url(${imageUrl})` }
     : {};
   return (
-    <div className={`menu-item background-image ${className}`}>
+    <div
+      className={`menu-item ${className}`}
+      onClick={() => history.push(link)}
+    >
       <div className="background-image" style={backgroundStyle} />
       <div className={`content ${contentClass}`}>
         <h1 className="title">{title.toUpperCase()}</h1>
@@ -23,4 +29,4 @@ const MenuItem = ({
   );
 };
 
-export default MenuItem;
+export default withRouter(MenuItem);

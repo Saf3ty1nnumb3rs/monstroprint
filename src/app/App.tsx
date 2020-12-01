@@ -1,12 +1,18 @@
 import React from 'react';
-import HomePage from 'modules/Main/pages/HomePage';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import Routes from 'app/Routing/Routes';
 
 import './App.scss';
 
 const App = (): React.ReactElement => {
   return (
     <div data-testid="App">
-      <HomePage />
+      <Router>
+        <main key={'main'} className={'main'}>
+          <Routes componentKey="contentComponent" />
+        </main>
+      </Router>
     </div>
   );
 };
