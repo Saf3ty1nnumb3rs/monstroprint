@@ -12,7 +12,7 @@ const LogoIcon = (): React.ReactElement => {
 };
 const Header = (): React.ReactElement => {
   const { pathname } = useLocation();
-  console.log(pathname);
+
   return (
     <div className="header">
       <Link to="/">
