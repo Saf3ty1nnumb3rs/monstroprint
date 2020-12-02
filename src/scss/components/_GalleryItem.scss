@@ -1,0 +1,34 @@
+.collection-item {
+  width: 21vw;
+  min-width: 11.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 21.875rem;
+  align-items: center;
+  padding: 1.25rem 0.625rem;
+
+  .image {
+    width: 100%;
+    height: 95%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 0.3125rem;
+  }
+
+  .collection-footer {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.125rem;
+
+    .name {
+      width: 90%;
+      margin-bottom: 0.9375rem;
+    }
+
+    .price {
+      width: 10%;
+    }
+  }
+}
