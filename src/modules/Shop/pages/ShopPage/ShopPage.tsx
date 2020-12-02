@@ -1,8 +1,18 @@
-import React from 'react';
-import { SHOP_DATA } from 'library/data/shopItems';
+import React, { useState } from 'react';
+import GalleryPreview from 'library/components/GalleryPreview';
+import { useShopDataConfig } from 'library/data/shopItems';
 
 const ShopPage = (): React.ReactElement => {
-  return <div>SHOP PAGE</div>;
+  const collections = useShopDataConfig();
+  const [shopData] = useState(collections);
+
+  return (
+    <div className="shoppage">
+      {shopData.map(({ id, ...collectionProps }) => {
+        return <GalleryPreview key={id} {...collectionProps} />;
+      })}
+    </div>
+  );
 };
 
 export default ShopPage;

@@ -6,3 +6,10 @@ export type SelectablePrimaryMenuItem = {
   className?: string;
   contentClass?: string;
 };
+
+export type GalleryItem = {
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+};
