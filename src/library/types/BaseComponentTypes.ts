@@ -13,3 +13,12 @@ export type GalleryItem = {
   imageUrl: string;
   price: number;
 };
+
+export type InputProps = {
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  label: string;
+  name: string;
+  type: string;
+  value: string;
+  required?: boolean;
+};
