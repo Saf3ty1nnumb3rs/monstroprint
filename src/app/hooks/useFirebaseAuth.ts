@@ -1,26 +1,18 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import {
   auth,
   createUserProfileDocument,
 } from 'firebaseutility/firebase.utils';
 import { UserProfile, SnapshotData } from 'app/types/types';
+import { useCallUserDispatch } from './useCallUserDispatch';
 
 export const useFirebaseAuth = (): { authorizedUser: UserProfile | null } => {
-  const [
+  const {
     authorizedUser,
     setAuthorizedUser,
-  ] = React.useState<UserProfile | null>(null);
-
-  const dispatch = useDispatch();
-  const setUser = useCallback(
-    () => dispatch({ type: 'SET_CURRENT_USER', payload: authorizedUser }),
-    [dispatch, authorizedUser],
-  );
-  const removeUser = useCallback(
-    () => dispatch({ type: 'REMOVE_CURRENT_USER', payload: null }),
-    [dispatch],
-  );
+    setUser,
+    removeUser,
+  } = useCallUserDispatch();
 
   React.useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
