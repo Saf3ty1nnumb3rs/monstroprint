@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import 'scss/components/_MenuItem.scss';
 import { SelectablePrimaryMenuItem } from 'library/types/BaseComponentTypes';
 
@@ -10,8 +10,9 @@ const MenuItem = ({
   contentClass = '',
   imageUrl,
   link = '/',
-  history,
-}: SelectablePrimaryMenuItem & RouteComponentProps): React.ReactElement => {
+}: SelectablePrimaryMenuItem): React.ReactElement => {
+  const history = useHistory();
+
   const backgroundStyle = imageUrl
     ? { backgroundImage: `url(${imageUrl})` }
     : {};
@@ -29,4 +30,4 @@ const MenuItem = ({
   );
 };
 
-export default withRouter(MenuItem);
+export default MenuItem;

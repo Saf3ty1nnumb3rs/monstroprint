@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Link,
-  useLocation,
-  withRouter,
-  RouteComponentProps,
-} from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import Logo from 'assets/CSK.png';
 import { UserProfile } from 'app/types/types';
 
@@ -19,14 +14,14 @@ const LogoIcon = (): React.ReactElement => {
     </div>
   );
 };
+
 const Header = ({
   currentUser,
-  history,
 }: {
   currentUser: UserProfile | null;
-} & RouteComponentProps): React.ReactElement => {
+}): React.ReactElement => {
   const { pathname } = useLocation();
-
+  const history = useHistory();
   return (
     <div className="header">
       <Link to="/">
@@ -65,4 +60,4 @@ const Header = ({
   );
 };
 
-export default withRouter(Header);
+export default Header;
