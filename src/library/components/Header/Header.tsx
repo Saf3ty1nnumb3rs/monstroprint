@@ -1,7 +1,16 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import {
+  Link,
+  useLocation,
+  withRouter,
+  RouteComponentProps,
+} from 'react-router-dom';
 import Logo from 'assets/CSK.png';
+import { UserProfile } from 'app/types/types';
+
 import 'scss/components/_Header.scss';
+
+import { auth } from 'firebaseutility/firebase.utils';
 
 const LogoIcon = (): React.ReactElement => {
   return (
@@ -10,7 +19,12 @@ const LogoIcon = (): React.ReactElement => {
     </div>
   );
 };
-const Header = (): React.ReactElement => {
+const Header = ({
+  currentUser,
+  history,
+}: {
+  currentUser: UserProfile | null;
+} & RouteComponentProps): React.ReactElement => {
   const { pathname } = useLocation();
 
   return (
@@ -28,13 +42,27 @@ const Header = (): React.ReactElement => {
             SHOP
           </Link>
         )}
-
         <Link to="/" className="option">
           CONTACT
         </Link>
+        {currentUser ? (
+          <div
+            className="option"
+            onClick={async () => {
+              await auth.signOut();
+              history.push('/signin');
+            }}
+          >
+            SIGN OUT
+          </div>
+        ) : (
+          <Link className="option" to="/signin">
+            SIGN IN
+          </Link>
+        )}
       </div>
     </div>
   );
 };
 
-export default Header;
+export default withRouter(Header);

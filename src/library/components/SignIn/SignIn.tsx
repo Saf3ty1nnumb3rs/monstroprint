@@ -4,6 +4,8 @@ import React from 'react';
 import FormInput from 'library/components/FormInput';
 import Button from 'library/components/Button';
 
+import { auth, signInWithGoogle } from 'firebaseutility/firebase.utils';
+
 import 'scss/components/_SignIn.scss';
 
 interface IState {
@@ -11,36 +13,29 @@ interface IState {
   password: string;
 }
 
-class SignIn extends React.PureComponent {
+class SignIn extends React.Component {
   readonly state: IState = {
     email: '',
     password: '',
   };
 
-  handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>,
+  ): Promise<void> => {
     event.preventDefault();
-
-    this.setState({ email: '', password: '' });
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: '', password: '' });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
   };
 
-  handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value }: { value: string } = event.target;
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        email: value,
-      };
-    });
-  };
-
-  handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value }: { value: string } = event.target;
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        password: value,
-      };
-    });
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
   render(): React.ReactElement {
@@ -48,13 +43,13 @@ class SignIn extends React.PureComponent {
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
-        <span>Sign in with your email and password</span>
+        <span>Sign in with your password</span>
 
         <form onSubmit={this.handleSubmit}>
           <FormInput
             name="email"
             type="email"
-            handleChange={this.handleEmailChange}
+            handleChange={this.handleChange}
             value={email}
             label="email"
             required
@@ -63,11 +58,17 @@ class SignIn extends React.PureComponent {
             name="password"
             type="password"
             value={password}
-            handleChange={this.handlePasswordChange}
+            handleChange={this.handleChange}
             label="password"
             required
           />
-          <Button type="submit"> Sign in </Button>
+          <div className="buttons">
+            <Button type="submit"> Sign In </Button>
+            <Button onClick={signInWithGoogle} isGoogleSignIn>
+              {' '}
+              Sign in with Google{' '}
+            </Button>
+          </div>
         </form>
       </div>
     );
