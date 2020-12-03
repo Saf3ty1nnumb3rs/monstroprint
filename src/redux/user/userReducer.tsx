@@ -1,20 +1,22 @@
 import { UserProfile } from 'app/types/types';
-import { SET_CURRENT_USER, SetCurrentUserAction } from './userActions';
+import {
+  SET_CURRENT_USER,
+  REMOVE_CURRENT_USER,
+  SetCurrentUserAction,
+  RemoveCurrentUserAction,
+} from './userActions';
 
-const INITIAL_STATE: { currentUser: UserProfile | null } = {
-  currentUser: null,
-};
+const INITIAL_STATE: UserProfile | null = null;
 
 const userReducer = (
-  state = INITIAL_STATE,
-  action: SetCurrentUserAction,
-): { currentUser: UserProfile | null } => {
+  state: UserProfile | null = INITIAL_STATE,
+  action: SetCurrentUserAction | RemoveCurrentUserAction,
+): UserProfile | null => {
   switch (action.type) {
     case SET_CURRENT_USER:
-      return {
-        ...state,
-        currentUser: action.payload,
-      };
+      return action.payload;
+    case REMOVE_CURRENT_USER:
+      return null;
     default:
       return state;
   }

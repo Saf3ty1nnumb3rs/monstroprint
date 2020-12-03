@@ -14,7 +14,7 @@ const App = (): React.ReactElement => {
 
   return (
     <div data-testid="App">
-      <Header currentUser={authorizedUser} />
+      <Header />
       <main key={'main'} className={'main'}>
         <Routes componentKey="contentComponent" />
       </main>

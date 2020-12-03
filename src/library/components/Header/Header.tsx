@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser } from 'redux/user/userSelectors';
 import { Link, useLocation, useHistory } from 'react-router-dom';
+
 import Logo from 'assets/CSK.png';
 import { UserProfile } from 'app/types/types';
 
@@ -15,13 +18,18 @@ const LogoIcon = (): React.ReactElement => {
   );
 };
 
-const Header = ({
-  currentUser,
-}: {
-  currentUser: UserProfile | null;
-}): React.ReactElement => {
+const Header = (): React.ReactElement => {
   const { pathname } = useLocation();
   const history = useHistory();
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const removeUser = useCallback(
+    () => dispatch({ type: 'REMOVE_CURRENT_USER', payload: null }),
+    [dispatch],
+  );
+
+  console.log(user);
   return (
     <div className="header">
       <Link to="/">
@@ -40,11 +48,12 @@ const Header = ({
         <Link to="/" className="option">
           CONTACT
         </Link>
-        {currentUser ? (
+        {user ? (
           <div
             className="option"
             onClick={async () => {
               await auth.signOut();
+              removeUser();
               history.push('/signin');
             }}
           >
