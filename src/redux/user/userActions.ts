@@ -1,7 +1,8 @@
 import { UserProfile } from 'app/types/types';
-
-export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-export const REMOVE_CURRENT_USER = 'REMOVE_CURRENT_USER';
+import {
+  SET_CURRENT_USER,
+  REMOVE_CURRENT_USER,
+} from 'redux/user/userActionTypes';
 
 export interface SetCurrentUserAction {
   type: typeof SET_CURRENT_USER;

@@ -4,7 +4,7 @@ import {
   createUserProfileDocument,
 } from 'firebaseutility/firebase.utils';
 import { UserProfile, SnapshotData } from 'app/types/types';
-import { useCallUserDispatch } from './useCallUserDispatch';
+import { useCallUserDispatch } from 'library/hooks/useCallUserDispatch';
 
 export const useFirebaseAuth = (): { authorizedUser: UserProfile | null } => {
   const {

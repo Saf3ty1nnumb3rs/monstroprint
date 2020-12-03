@@ -6,7 +6,8 @@ interface Collection {
   routeName: string;
   items: GalleryItem[];
 }
-
+// This would normally of course come from an API but
+// I thought that might be excessive for our purposes
 export const useShopDataConfig = (): Collection[] => {
   return [
     {

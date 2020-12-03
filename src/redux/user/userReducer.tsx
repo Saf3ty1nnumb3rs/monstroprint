@@ -2,9 +2,9 @@ import { UserProfile } from 'app/types/types';
 import {
   SET_CURRENT_USER,
   REMOVE_CURRENT_USER,
-  SetCurrentUserAction,
-  RemoveCurrentUserAction,
-} from './userActions';
+} from 'redux/user/userActionTypes';
+
+import { SetCurrentUserAction, RemoveCurrentUserAction } from './userActions';
 
 const INITIAL_STATE: UserProfile | null = null;
 

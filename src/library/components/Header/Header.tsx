@@ -1,10 +1,9 @@
-import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/user/userSelectors';
 import { Link, useLocation, useHistory } from 'react-router-dom';
-
+import { useCallUserDispatch } from 'library/hooks/useCallUserDispatch';
 import Logo from 'assets/CSK.png';
-import { UserProfile } from 'app/types/types';
 
 import 'scss/components/_Header.scss';
 
@@ -22,14 +21,8 @@ const Header = (): React.ReactElement => {
   const { pathname } = useLocation();
   const history = useHistory();
   const user = useSelector(selectUser);
-  const dispatch = useDispatch();
+  const { removeUser } = useCallUserDispatch();
 
-  const removeUser = useCallback(
-    () => dispatch({ type: 'REMOVE_CURRENT_USER', payload: null }),
-    [dispatch],
-  );
-
-  console.log(user);
   return (
     <div className="header">
       <Link to="/">
