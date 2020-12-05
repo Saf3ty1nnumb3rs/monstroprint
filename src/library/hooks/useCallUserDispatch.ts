@@ -25,6 +25,7 @@ export const useCallUserDispatch = (): {
     () => dispatch({ type: 'SET_CURRENT_USER', payload: authorizedUser }),
     [dispatch, authorizedUser],
   );
+
   const removeUser = useCallback(
     () => dispatch({ type: 'REMOVE_CURRENT_USER', payload: null }),
     [dispatch],
