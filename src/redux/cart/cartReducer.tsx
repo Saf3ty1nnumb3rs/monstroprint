@@ -1,5 +1,6 @@
 import { CartItemProps } from 'library/types/BaseComponentTypes';
 import { ADD_ITEM, TOGGLE_CART_HIDDEN } from './cartActionTypes';
+import { addItemToCart } from './cartUtils';
 
 import { AddItemAction, ToggleCartAction } from './cartActions';
 
@@ -21,7 +22,7 @@ const cartReducer = (
     case ADD_ITEM:
       return {
         ...state,
-        cartItems: [...state.cartItems, action.payload],
+        cartItems: addItemToCart(state.cartItems, action.payload),
       };
     default:
       return state;

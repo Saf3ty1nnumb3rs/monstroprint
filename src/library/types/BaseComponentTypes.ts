@@ -8,7 +8,7 @@ export type SelectablePrimaryMenuItem = {
 };
 
 export interface CartItemProps extends GalleryItem {
-  quantity?: number;
+  quantity: number;
 }
 
 export type GalleryItem = {

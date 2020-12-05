@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { GalleryItem, CartItemProps } from 'library/types/BaseComponentTypes';
+import { CartItemProps } from 'library/types/BaseComponentTypes';
 
 export const useCallCartDispatch = (): {
   isCartToggled: boolean;
@@ -9,7 +9,7 @@ export const useCallCartDispatch = (): {
     item: CartItemProps,
   ) => {
     type: string;
-    payload: GalleryItem | null;
+    payload: CartItemProps | null;
   };
   toggleCartHidden: () => {
     type: string;

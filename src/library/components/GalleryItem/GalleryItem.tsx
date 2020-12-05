@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'library/components/Button';
 import { useCallCartDispatch } from 'library/hooks/useCallCartDispatch';
-import { GalleryItem as GalleryItemProps } from 'library/types/BaseComponentTypes';
+import { CartItemProps } from 'library/types/BaseComponentTypes';
 
 import 'scss/components/_GalleryItem.scss';
 
@@ -10,7 +10,8 @@ const GalleryItem = ({
   name,
   price,
   imageUrl,
-}: GalleryItemProps): React.ReactElement => {
+  quantity = 0,
+}: CartItemProps): React.ReactElement => {
   const { addItem } = useCallCartDispatch();
   const style = imageUrl ? { backgroundImage: `url(${imageUrl})` } : {};
   return (
@@ -28,6 +29,7 @@ const GalleryItem = ({
             name,
             price,
             imageUrl,
+            quantity,
           })
         }
       >

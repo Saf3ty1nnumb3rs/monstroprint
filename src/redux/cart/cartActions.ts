@@ -1,4 +1,4 @@
-import { GalleryItem } from 'library/types/BaseComponentTypes';
+import { CartItemProps } from 'library/types/BaseComponentTypes';
 import { ADD_ITEM, TOGGLE_CART_HIDDEN } from './cartActionTypes';
 
 export interface ToggleCartAction {
@@ -7,14 +7,14 @@ export interface ToggleCartAction {
 
 export interface AddItemAction {
   type: typeof ADD_ITEM;
-  payload: GalleryItem;
+  payload: CartItemProps;
 }
 
 export const toggleCartHidden = (): ToggleCartAction => ({
   type: TOGGLE_CART_HIDDEN,
 });
 
-export const addItem = (item: GalleryItem): AddItemAction => ({
+export const addItem = (item: CartItemProps): AddItemAction => ({
   type: ADD_ITEM,
   payload: item,
 });
