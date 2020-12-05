@@ -6,14 +6,19 @@ import 'scss/components/_Button.scss';
 const Button = ({
   children,
   isGoogleSignIn,
+  inverted,
   ...otherProps
 }: React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
-> & { isGoogleSignIn?: boolean }): React.ReactElement => {
+> & { isGoogleSignIn?: boolean; inverted?: boolean }): React.ReactElement => {
   const signIn = isGoogleSignIn ? 'google-sign-in' : '';
+  const invertedProp = inverted ? 'inverted' : '';
   return (
-    <button className={`${signIn} custom-button`} {...otherProps}>
+    <button
+      className={`${invertedProp} ${signIn} custom-button`}
+      {...otherProps}
+    >
       {children}
     </button>
   );
