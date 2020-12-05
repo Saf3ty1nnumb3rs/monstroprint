@@ -1,5 +1,5 @@
 import React from 'react';
-import { GalleryItem as GalleryItemProps } from 'library/types/BaseComponentTypes';
+import { CartItemProps } from 'library/types/BaseComponentTypes';
 import GalleryItem from 'library/components/GalleryItem';
 import 'scss/components/_GalleryPreview.scss';
 
@@ -8,7 +8,7 @@ const GalleryPreview = ({
   items,
 }: {
   title: string;
-  items: GalleryItemProps[];
+  items: CartItemProps[];
 }): React.ReactElement => {
   return (
     <div className="gallery-preview">

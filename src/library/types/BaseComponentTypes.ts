@@ -7,6 +7,10 @@ export type SelectablePrimaryMenuItem = {
   contentClass?: string;
 };
 
+export interface CartItemProps extends GalleryItem {
+  quantity: number;
+}
+
 export type GalleryItem = {
   id: number;
   name: string;

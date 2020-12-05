@@ -1,0 +1,32 @@
+import { CartItemProps } from 'library/types/BaseComponentTypes';
+import { ADD_ITEM, TOGGLE_CART_HIDDEN } from './cartActionTypes';
+import { addItemToCart } from './cartUtils';
+
+import { AddItemAction, ToggleCartAction } from './cartActions';
+
+const INITIAL_STATE = {
+  hidden: true,
+  cartItems: [],
+};
+
+const cartReducer = (
+  state = INITIAL_STATE,
+  action: AddItemAction | ToggleCartAction,
+): { hidden: boolean; cartItems: CartItemProps[] } => {
+  switch (action.type) {
+    case TOGGLE_CART_HIDDEN:
+      return {
+        ...state,
+        hidden: !state.hidden,
+      };
+    case ADD_ITEM:
+      return {
+        ...state,
+        cartItems: addItemToCart(state.cartItems, action.payload),
+      };
+    default:
+      return state;
+  }
+};
+
+export default cartReducer;
