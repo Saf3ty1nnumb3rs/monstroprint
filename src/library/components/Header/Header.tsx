@@ -1,16 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/user/userSelectors';
-import { selectCartHidden } from 'redux/cart/cartSelectors';
-import { Link, useLocation, useHistory } from 'react-router-dom';
-import { useCallUserDispatch } from 'library/hooks/useCallUserDispatch';
-import CartIcon from 'library/components/CartIcon';
+import { selectCartHidden, selectCartItems } from 'redux/cart/cartSelectors';
+import { useLocation } from 'react-router-dom';
+import LinkWrapper from 'library/components/LinkWrapper';
 import CartDropdown from 'library/components/CartDropdown';
+import HeaderOptions from 'library/components/Header/components/HeaderOptions';
+
 import Logo from 'assets/CSK.png';
 
 import 'scss/components/_Header.scss';
-
-import { auth } from 'firebaseutility/firebase.utils';
 
 const LogoIcon = (): React.ReactElement => {
   return (
@@ -22,49 +21,22 @@ const LogoIcon = (): React.ReactElement => {
 
 const Header = (): React.ReactElement => {
   const { pathname } = useLocation();
-  const history = useHistory();
   const user = useSelector(selectUser);
+  // NONE of these components actually need the user object
+  // They only need to know if there is a valid logged in user
+  // This would normally just be handled in our redux store or by permissions
   const isCartHidden = useSelector(selectCartHidden);
-
-  const { removeUser } = useCallUserDispatch();
+  const cartItems = useSelector(selectCartItems);
 
   return (
     <div className="header">
-      <Link to="/">
-        <LogoIcon />
-      </Link>
-      <div className="options">
-        {pathname.includes('shop') ? (
-          <Link to="/" className="option">
-            HOME
-          </Link>
-        ) : (
-          <Link to="/shop" className="option">
-            SHOP
-          </Link>
-        )}
-        <Link to="/" className="option">
-          CONTACT
-        </Link>
-        {user ? (
-          <div
-            className="option"
-            onClick={async () => {
-              await auth.signOut();
-              removeUser();
-              history.push('/signin');
-            }}
-          >
-            SIGN OUT
-          </div>
-        ) : (
-          <Link className="option" to="/signin">
-            SIGN IN
-          </Link>
-        )}
-        <CartIcon />
-      </div>
-      {isCartHidden && <CartDropdown />}
+      <LinkWrapper route="/" children={<LogoIcon />} />
+      <HeaderOptions pathname={pathname} user={user} />
+      <CartDropdown
+        isCartHidden={isCartHidden}
+        cartItems={cartItems}
+        user={user}
+      />
     </div>
   );
 };
