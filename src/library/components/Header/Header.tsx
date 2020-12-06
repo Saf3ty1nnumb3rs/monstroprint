@@ -23,6 +23,7 @@ const Header = (): React.ReactElement => {
   const { pathname } = useLocation();
   const user = useSelector(selectUser);
   const { hidden, cartItems } = useContext(CartContext);
+
   // NONE of these components actually need the user object
   // They only need to know if there is a valid logged in user
   // This would normally just be handled in our redux store or by permissions

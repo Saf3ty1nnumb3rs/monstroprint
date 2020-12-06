@@ -1,13 +1,10 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { CartItemProps } from 'library/types/BaseComponentTypes';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/user/userSelectors';
+import { collectionsRef } from 'firebaseutility/firebase.utils';
 
-import {
-  addItemToCart,
-  removeItemFromCart,
-  filterItemFromCart,
-  getCartItemsCount,
-  getCartTotal,
-} from 'providers/cart/cartUtils';
+import { useCartUtils } from 'providers/cart/cartUtils';
 
 interface DefaultContext {
   hidden: boolean;
@@ -40,7 +37,25 @@ const CartProvider = ({
   const [cartItems, setCartItems] = useState<CartItemProps[]>([]);
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
-
+  const user = useSelector(selectUser);
+  const {
+    addItemToCart,
+    removeItemFromCart,
+    filterItemFromCart,
+    getCartItemsCount,
+    getCartTotal,
+  } = useCartUtils(collectionsRef(user));
+  useEffect(() => {
+    const cartItemsRef = collectionsRef(user);
+    const getCartSnapshot = async () => {
+      const snapshot = await cartItemsRef?.get();
+      const docData = snapshot?.docs.map((doc) =>
+        doc.data(),
+      ) as CartItemProps[];
+      setCartItems(docData || []);
+    };
+    getCartSnapshot();
+  }, [user]);
   const addItem = (item: CartItemProps) =>
     setCartItems(addItemToCart(cartItems, item));
   const removeItem = (item: CartItemProps) =>
@@ -52,6 +67,7 @@ const CartProvider = ({
   useEffect(() => {
     setCartItemsCount(getCartItemsCount(cartItems));
     setCartTotal(getCartTotal(cartItems));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartItems]);
 
   return (
