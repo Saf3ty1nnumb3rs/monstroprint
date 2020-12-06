@@ -2,6 +2,8 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
+import { CartItemProps } from 'library/types/BaseComponentTypes';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyDhLOiDpx1gSpCkjSmHPfSYSyTGFf5DOYU',
   authDomain: 'monstrodemo.firebaseapp.com',
@@ -37,11 +39,19 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       console.log('error creating user', error.message);
     }
   }
-
   // eslint-disable-next-line consistent-return
   return userRef;
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const collectionsRef = (user) => {
+  if (!user) return;
+  const cartItemsRef = firestore
+    .doc(`/users/${user.id}`)
+    .collection('cartItems');
+  // eslint-disable-next-line consistent-return
+  return cartItemsRef;
+};
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 

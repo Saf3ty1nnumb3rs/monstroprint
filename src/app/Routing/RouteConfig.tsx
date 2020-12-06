@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { MainRoutes } from 'modules/Main/routes/MainRoutes';
 import { ShopRoutes } from 'modules/Shop/routes/ShopRoutes';
+import { CheckoutRoutes } from 'modules/Checkout/routes/CheckoutRoutes';
 
 export interface RouteType {
   id: string;
@@ -12,4 +13,8 @@ export interface RouteType {
   featureFlag?: string;
 }
 
-export const RouteConfig: RouteType[] = [...MainRoutes, ...ShopRoutes];
+export const RouteConfig: RouteType[] = [
+  ...MainRoutes,
+  ...CheckoutRoutes,
+  ...ShopRoutes,
+];

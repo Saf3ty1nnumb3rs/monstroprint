@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ReactComponent as ShoppingIcon } from 'assets/shoppingBag.svg';
 import { UserProfile } from 'app/types/types';
-import { useCallCartDispatch } from 'library/hooks/useCallCartDispatch';
+import { CartContext } from 'providers/cart/CartProvider';
 
 import 'scss/components/_CartIcon.scss';
 
@@ -10,12 +10,12 @@ const CartIcon = ({
 }: {
   user: UserProfile | null;
 }): React.ReactElement | null => {
-  const { toggleCartHidden } = useCallCartDispatch();
+  const { toggleHidden, cartItemsCount } = useContext(CartContext);
 
   return user ? (
-    <div className="cart-icon" onClick={toggleCartHidden}>
+    <div className="cart-icon" onClick={toggleHidden}>
       <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">0</span>
+      <span className="item-count">{cartItemsCount}</span>
     </div>
   ) : null;
 };
