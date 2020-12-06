@@ -1,5 +1,4 @@
 import React from 'react';
-import isNull from 'lodash/isNull';
 import { auth } from 'firebaseutility/firebase.utils';
 import { UserProfile } from 'app/types/types';
 import { Link, useHistory } from 'react-router-dom';

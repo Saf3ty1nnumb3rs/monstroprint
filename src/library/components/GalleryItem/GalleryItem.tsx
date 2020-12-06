@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'library/components/Button';
-import { useCallCartDispatch } from 'library/hooks/useCallCartDispatch';
 import { CartItemProps } from 'library/types/BaseComponentTypes';
+import { CartContext } from 'providers/cart/CartProvider';
 
 import 'scss/components/_GalleryItem.scss';
 
@@ -12,7 +12,8 @@ const GalleryItem = ({
   imageUrl,
   quantity = 0,
 }: CartItemProps): React.ReactElement => {
-  const { addItem } = useCallCartDispatch();
+  const { addItem } = useContext(CartContext);
+
   const style = imageUrl ? { backgroundImage: `url(${imageUrl})` } : {};
   return (
     <div className="collection-item">

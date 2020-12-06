@@ -13,9 +13,9 @@ import thunk, { ThunkMiddleware } from 'redux-thunk';
 
 import rootReducer from './root-reducer';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const middlewares: (
-  | Middleware<{}, any, Dispatch<AnyAction>>
+  | // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Middleware<{}, any, Dispatch<AnyAction>>
   | ThunkMiddleware<{}, AnyAction, undefined>
 )[] = [thunk];
 
