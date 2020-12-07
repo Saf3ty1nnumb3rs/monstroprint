@@ -1,44 +1,44 @@
 import { SelectablePrimaryMenuItem } from 'library/types/BaseComponentTypes';
+import Careless from 'assets/Careless.png';
+import Commit from 'assets/Commit.png';
+import Freedom from 'assets/FreedomFromWant.png';
+import Repro from 'assets/Reprocessing.png';
+import Talents from 'assets/Talents.png';
 
 export const usePrimaryMenuItemConfig = (): SelectablePrimaryMenuItem[] => {
   const primaryMenuItems = [
     {
       title: 'sci fi',
       subtitle: 'SHOP NOW',
-      imageUrl:
-        'https://drive.google.com/uc?id=13_m7CVDlUPYdkkWtFdkLXnziCiOqluHt',
+      imageUrl: Commit,
       className: 'small',
       link: 'scifi',
     },
     {
       title: 'industrial',
       subtitle: 'SHOP NOW',
-      imageUrl:
-        'https://drive.google.com/uc?id=1_gRxjg9iDiSQN3drtv4ZGzta2mpzglqo',
+      imageUrl: Repro,
       className: 'small',
       link: 'industrial',
     },
     {
       title: 'historic',
       subtitle: 'SHOP NOW',
-      imageUrl:
-        'https://drive.google.com/uc?id=1FasurgWsETQxh-XrzAjg3Ks90rXz1Vas',
+      imageUrl: Freedom,
       className: 'small',
       link: 'historic',
     },
     {
       title: 'imported',
       subtitle: 'SHOP NOW',
-      imageUrl:
-        'https://drive.google.com/uc?id=1dE1xYZUuWrbjidR-FkscxE_nARybPGgs',
+      imageUrl: Talents,
       className: 'large',
       link: 'imported',
     },
     {
       title: 'propaganda',
       subtitle: 'SHOP NOW',
-      imageUrl:
-        'https://drive.google.com/uc?id=1SvpNUlllPii8mj-dMYMLkIfV8ZBs3JON',
+      imageUrl: Careless,
       className: 'large',
       link: 'propaganda',
     },

@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import 'scss/components/_MenuItem.scss';
 import { SelectablePrimaryMenuItem } from 'library/types/BaseComponentTypes';
+import CSK from 'assets/CSK.png';
 
 const MenuItem = ({
   title,
