@@ -2,8 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-import { CartItemProps } from 'library/types/BaseComponentTypes';
-
 const firebaseConfig = {
   apiKey: 'AIzaSyDhLOiDpx1gSpCkjSmHPfSYSyTGFf5DOYU',
   authDomain: 'monstrodemo.firebaseapp.com',

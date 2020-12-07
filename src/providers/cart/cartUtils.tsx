@@ -1,5 +1,4 @@
 import { CartItemProps } from 'library/types/BaseComponentTypes';
-import { UserProfile } from 'app/types/types';
 
 interface CartUtils {
   addItemToCart: (
@@ -31,12 +30,10 @@ export const useCartUtils = (
 
     if (existingCartItem) {
       if (existingCartItem.id === cartItemToAdd.id) {
-        collectionsRef
-          ?.doc(existingCartItem.name)
-          .set({
-            ...existingCartItem,
-            quantity: existingCartItem.quantity + 1,
-          });
+        collectionsRef?.doc(existingCartItem.name).set({
+          ...existingCartItem,
+          quantity: existingCartItem.quantity + 1,
+        });
       }
       return cartItems.map((cartItem) =>
         cartItem.id === cartItemToAdd.id

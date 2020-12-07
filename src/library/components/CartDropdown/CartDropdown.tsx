@@ -19,7 +19,7 @@ const CartDropdown = ({
   isCartHidden,
   user,
 }: CartDropdownProps): React.ReactElement | null => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, toggleHidden } = useContext(CartContext);
   const history = useHistory();
 
   return !isNull(user) && !isCartHidden ? (
@@ -29,7 +29,14 @@ const CartDropdown = ({
           return <CartItem key={cartItem.id} item={cartItem} />;
         })}
       </div>
-      <Button onClick={() => history.push('/checkout')}>GO TO CHECKOUT</Button>
+      <Button
+        onClick={() => {
+          toggleHidden();
+          history.push('/checkout');
+        }}
+      >
+        GO TO CHECKOUT
+      </Button>
     </div>
   ) : null;
 };
